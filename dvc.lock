@@ -16,3 +16,19 @@ stages:
     - path: data/raw/data.csv
       md5: 229aff8bb86a75454fe95beda606f9c1
       size: 522194
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/data.csv
+      md5: 229aff8bb86a75454fe95beda606f9c1
+      size: 522194
+    - path: src/split_data.py
+      md5: 85aaac4f383297140548d34ecc12bd19
+      size: 1071
+    outs:
+    - path: data/processed/test_data.csv
+      md5: 29efc7ca4b5cf3b764999e7846e84909
+      size: 104655
+    - path: data/processed/train_data.csv
+      md5: d4ca52e4eb3d616b64df28ce08e9bd6c
+      size: 417699
