@@ -29,7 +29,8 @@ def index():
     if request.method == "POST":
         try:
             if request.form:
-                data = request.form.values()
+                data = dict(request.form).values()
+                data = [list(map(float, data))]
                 response = predict(data)
                 return render_template("index.html", response=response)
 
@@ -40,5 +41,6 @@ def index():
     else:
         return render_template("index.html")
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)

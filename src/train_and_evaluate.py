@@ -33,8 +33,8 @@ def train_and_evaluate(config_path):
 
     target = [config["base"]["target_col"]]
 
-    train = pd.read_csv(train_data_path, sep=",")
-    test = pd.read_csv(test_data_path, sep=",")
+    train = pd.read_csv(train_data_path)
+    test = pd.read_csv(test_data_path)
 
     train_y = train[target]
     test_y = test[target]
@@ -82,6 +82,7 @@ def train_and_evaluate(config_path):
     os.makedirs(model_dir, exist_ok=True)
     model_path = os.path.join(model_dir, "model.joblib")
     joblib.dump(lr, model_path)
+    #print(model_path)
 
 if __name__=="__main__":
     args = argparse.ArgumentParser()
